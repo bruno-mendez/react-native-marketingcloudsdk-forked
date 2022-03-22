@@ -133,6 +133,10 @@ Follow [these instructions](./ios_push.md) to enable push for iOS.
     * [.disableVerboseLogging()](#MCReactModule.disableVerboseLogging)
     * [.logSdkState()](#MCReactModule.logSdkState)
 
+    **Inbox Messages**  
+
+    * [.getAllMessages()](#MCReactModule.getAllMessages) ⇒ <code>Promise.&lt;Array.&lt;!Object&gt;&gt;</code>
+
 <a name="MCReactModule.isPushEnabled"></a>
 
 ### MCReactModule.isPushEnabled() ⇒ <code>Promise.&lt;boolean&gt;</code>
@@ -325,7 +329,20 @@ Instructs the native SDK to log the SDK state to the native logging system (Logc
 Android and Xcode/Console.app for iOS).  This content can help diagnose most issues within
 the SDK and will be requested by the Marketing Cloud support team.
 
+**Kind**: static method of [<code>MCReactModule</code>](#MCReactModule)
+
+---
+<a name="MCReactModule.getAllMessages"></a>
+
+### MCReactModule.getAllMessages() ⇒ <code>Promise.&lt;Array.&lt;?Object&gt;&gt;</code>
+Returns all active inbox messages already downloaded from the  Marketing Cloud SDK
+
 **Kind**: static method of [<code>MCReactModule</code>](#MCReactModule)  
+**Returns**: <code>Promise.&lt;Array.&lt;?Object&gt;&gt;</code> - A promise to the array of objects representing inbox messeges.  
+**See**
+
+- [Android Docs](https://salesforce-marketingcloud.github.io/MarketingCloudSDK-Android/javadocs/6.0/reference/com/salesforce/marketingcloud/registration/RegistrationManager.html#getAllMessages())
+- [iOS Docs](https://salesforce-marketingcloud.github.io/MarketingCloudSDK-iOS/appledoc/Classes/MarketingCloudSDK.html#//api/name/sfmc_getAllMessages)
 
 
 ---
