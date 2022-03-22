@@ -132,7 +132,6 @@ RCT_EXPORT_METHOD(getAllMessages
                   : (RCTPromiseResolveBlock)resolve rejecter
                   : (RCTPromiseRejectBlock)reject) {
     NSArray *messages = [[MarketingCloudSDK sharedInstance] sfmc_getAllMessages];
-    resolve(messages);
+    resolve((messages != nil) ? messages : @[]);
 }
-
 @end
