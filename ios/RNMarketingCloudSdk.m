@@ -128,10 +128,6 @@ RCT_EXPORT_METHOD(logSdkState) {
     [self splitLog:[[MarketingCloudSDK sharedInstance] sfmc_getSDKState]];
 }
 
-/* RCT_EXPORT_METHOD(getAllMessages : (NSArray *_Nullable)) {
-    [[MarketingCloudSDK sharedInstance] sfmc_getAllMessages];
-} */
-
 RCT_EXPORT_METHOD(getAllMessages
                   : (RCTPromiseResolveBlock)resolve rejecter
                   : (RCTPromiseRejectBlock)reject) {
