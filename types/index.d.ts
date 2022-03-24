@@ -45,5 +45,5 @@ export default class MCReactModule {
     static enableVerboseLogging(): void;
     static disableVerboseLogging(): void;
     static logSdkState(): void;
-    static getAllMessages(): Promise<Array<Object>>;
+    static getAllMessages(): Promise<Array>;
 }
