@@ -135,9 +135,10 @@ RCT_EXPORT_METHOD(getAllMessages
     resolve((messages != nil) ? messages : @[]);
 }
 
-RCT_EXPORT_METHOD(markMessageRead : (NSDictionary *_Nonnull)messageDictionary, 
-                          resolver: (RCTPromiseResolveBlock)resolve,
-                          rejecter: (RCTPromiseRejectBlock)reject) {
+RCT_EXPORT_METHOD(markMessageRead
+                  : (NSDictionary *_Nonnull)messageDictionary
+                  : (RCTPromiseResolveBlock)resolve rejecter
+                  : (RCTPromiseRejectBlock)reject) {
     BOOL status = [[MarketingCloudSDK sharedInstance] sfmc_markMessageRead:messageDictionary];
     resolve(@(status));
 }
