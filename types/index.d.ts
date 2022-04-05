@@ -47,4 +47,8 @@ export default class MCReactModule {
     static logSdkState(): void;
     static getAllMessages(): Promise<Array>;
     static markMessageRead(message: object): Promise<boolean>;
+    static getUnreadMessages(): Promise<Array>;
+    static getReadMessages(): Promise<Array>;
+    static getDeletedMessages(): Promise<Array>;
+    static getAllMessagesCount():Promise<number>;
 }
