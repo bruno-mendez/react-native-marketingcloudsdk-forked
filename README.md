@@ -112,6 +112,12 @@ pod install
 
 Follow [these instructions](./ios_push.md) to enable push for iOS.
 
+#### 4. Enable Inbox Messages
+
+```objc
+// Add the following line in the SDK configuration in your AppDelegate.m class:
+[mcsdkBuilder sfmc_setInboxEnabled:@(YES)];
+```
 ## API Reference <a name="reference"></a>
 
 **Kind**: global class  
@@ -140,7 +146,9 @@ Follow [these instructions](./ios_push.md) to enable push for iOS.
     * [.getUnreadMessages()](#MCReactModule.getUnreadMessages) ⇒ <code>Promise.&lt;Array.&lt;!Object&gt;&gt;</code>
     * [.getReadMessages()](#MCReactModule.getReadMessages) ⇒ <code>Promise.&lt;Array.&lt;!Object&gt;&gt;</code>
     * [.getDeletedMessages()](#MCReactModule.getDeletedMessages) ⇒ <code>Promise.&lt;Array.&lt;!Object&gt;&gt;</code>
-    * [.getAllMessagesCount()](#MCReactModule.getDeletedMessages) ⇒ <code>Promise.&lt;Array.&lt;!Object&gt;&gt;</code>
+    * [.getAllMessagesCount()](#MCReactModule.getAllMessagesCount) ⇒ <code>Promise.&lt;number&gt;</code>
+    * [.getUnreadMessagesCount()](#MCReactModule.getUnreadMessagesCount) ⇒ <code>Promise.&lt;number&gt;</code>
+    * [.getReadMessagesCount()](#MCReactModule.getReadMessagesCount) ⇒ <code>Promise.&lt;number&gt;</code>
 
 <a name="MCReactModule.isPushEnabled"></a>
 
@@ -365,7 +373,7 @@ Sets an Inbox message as read.
 
 <a name="MCReactModule.getUnreadMessages"></a>
 
-### MCReactModule.getAllMessages() ⇒ <code>Promise.&lt;Array.&lt;?Object&gt;&gt;</code>
+### MCReactModule.getUnreadMessages() ⇒ <code>Promise.&lt;Array.&lt;?Object&gt;&gt;</code>
 Returns all unread active Inbox messages already downloaded from the  Marketing Cloud SDK
 
 **Kind**: static method of [<code>MCReactModule</code>](#MCReactModule)  
@@ -374,6 +382,32 @@ Returns all unread active Inbox messages already downloaded from the  Marketing 
 
 - [Android Docs](https://salesforce-marketingcloud.github.io/MarketingCloudSDK-Android/javadocs/6.0/reference/com/salesforce/marketingcloud/registration/RegistrationManager.html#getUnreadMessages())
 - [iOS Docs](https://salesforce-marketingcloud.github.io/MarketingCloudSDK-iOS/appledoc/Classes/MarketingCloudSDK.html#//api/name/sfmc_getUnreadMessages)
+
+
+<a name="MCReactModule.getUnreadMessagesCount"></a>
+
+### MCReactModule.getUnreadMessagesCount() ⇒ <code>Promise.&lt;number&gt;</code>
+Returns count of unread active Inbox messages already downloaded from the  Marketing Cloud SDK
+
+**Kind**: static method of [<code>MCReactModule</code>](#MCReactModule)  
+**Returns**: <code>Promise.&lt;number&gt;</code> - A promise to the number representing count of unread active Inbox messages.
+**See**
+
+- [Android Docs](https://salesforce-marketingcloud.github.io/MarketingCloudSDK-Android/javadocs/6.0/reference/com/salesforce/marketingcloud/registration/RegistrationManager.html#getUnreadMessagesCount())
+- [iOS Docs](https://salesforce-marketingcloud.github.io/MarketingCloudSDK-iOS/appledoc/Classes/MarketingCloudSDK.html#//api/name/getUnreadMessagesCount)
+
+
+<a name="MCReactModule.getReadMessagesCount"></a>
+
+### MCReactModule.getReadMessagesCount() ⇒ <code>Promise.&lt;number&gt;</code>
+Returns count of all active Inbox messages marked as read, already downloaded from the  Marketing Cloud SDK.
+
+**Kind**: static method of [<code>MCReactModule</code>](#MCReactModule)  
+**Returns**: <code>Promise.&lt;number&gt;</code> - A promise to the number representing count of all active Inbox messages marked as read.
+**See**
+
+- [Android Docs](https://salesforce-marketingcloud.github.io/MarketingCloudSDK-Android/javadocs/6.0/reference/com/salesforce/marketingcloud/registration/RegistrationManager.html#getReadMessagesCount())
+- [iOS Docs](https://salesforce-marketingcloud.github.io/MarketingCloudSDK-iOS/appledoc/Classes/MarketingCloudSDK.html#//api/name/getReadMessagesCount)
 
 
 ---

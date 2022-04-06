@@ -174,7 +174,25 @@ RCT_EXPORT_METHOD(getAllMessagesCount
                   : (RCTPromiseResolveBlock)resolve rejecter
                   : (RCTPromiseRejectBlock)reject) {
     NSUInteger messagesCount = [[MarketingCloudSDK sharedInstance] sfmc_getAllMessagesCount];
+    NSLog (@"messagesCount RCT_EXPORT_METHOD_getAllMessagesCount: %@",  messagesCount);
     resolve(@(messagesCount));
+}
+
+RCT_EXPORT_METHOD(getUnreadMessagesCount
+                  : (RCTPromiseResolveBlock)resolve rejecter
+                  : (RCTPromiseRejectBlock)reject) {
+    NSUInteger unreadMessagesCount = [[MarketingCloudSDK sharedInstance] sfmc_getUnreadMessagesCount];
+    NSLog (@"unreadMessagesCount RCT_EXPORT_METHOD_getUnreadMessagesCount: %@",  unreadMessagesCount);
+
+    resolve(@(unreadMessagesCount));
+}
+
+RCT_EXPORT_METHOD(getReadMessagesCount
+                  : (RCTPromiseResolveBlock)resolve rejecter
+                  : (RCTPromiseRejectBlock)reject) {
+    NSUInteger readMessagesCount = [[MarketingCloudSDK sharedInstance] sfmc_getReadMessagesCount];
+    NSLog (@"readMessagesCount RCT_EXPORT_METHOD_getReadMessagesCount: %@",  readMessagesCount);
+    resolve(@(unreadMessagesCount));
 }
 
 @end

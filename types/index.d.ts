@@ -51,4 +51,6 @@ export default class MCReactModule {
     static getReadMessages(): Promise<Array>;
     static getDeletedMessages(): Promise<Array>;
     static getAllMessagesCount():Promise<number>;
+    static getUnreadMessagesCount():Promise<number>;
+    static getReadMessagesCount():Promise<number>;
 }
