@@ -195,4 +195,31 @@ RCT_EXPORT_METHOD(getReadMessagesCount
     resolve(@(unreadMessagesCount));
 }
 
+RCT_EXPORT_METHOD(getDeletedMessagesCount
+                  : (RCTPromiseResolveBlock)resolve rejecter
+                  : (RCTPromiseRejectBlock)reject) {
+    NSUInteger deletedMessagesCount = [[MarketingCloudSDK sharedInstance] sfmc_getDeletedMessagesCount];
+    NSLog (@"deletedMessagesCount RCT_EXPORT_METHOD_deletedMessagesCount: %@",  deletedMessagesCount);
+    resolve(@(deletedMessagesCount));
+}
+
+RCT_EXPORT_METHOD(markMessageDeleted
+                  : (NSDictionary *_Nonnull)message
+                  : (RCTPromiseResolveBlock)resolve rejecter
+                  : (RCTPromiseRejectBlock)reject) {
+    BOOL status = [[MarketingCloudSDK sharedInstance] sfmc_markMessageDeleted:message];
+    NSLog (@"status RCT_EXPORT_METHOD_markMessageDeleted: %s",  status ? "true" : "false");
+    resolve(@(status));
+}
+
+RCT_EXPORT_METHOD(markMessageWithIdRead
+                  : (NSString *_Nonnull)messageId
+                  : (RCTPromiseResolveBlock)resolve rejecter
+                  : (RCTPromiseRejectBlock)reject) {
+    BOOL status = [[MarketingCloudSDK sharedInstance] sfmc_markMessageWithIdRead:messageId];
+    NSLog (@"status RCT_EXPORT_METHOD_markMessageWithIdRead: %s",  status ? "true" : "false");
+    resolve(@(status));
+}
+
+
 @end
