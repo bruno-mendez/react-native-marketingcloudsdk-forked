@@ -246,4 +246,12 @@ RCT_EXPORT_METHOD(markAllMessagesDeleted
     resolve(@(status));
 }
 
+RCT_EXPORT_METHOD(refreshMessages
+                 : (RCTPromiseResolveBlock)resolve rejecter
+                 : (RCTPromiseRejectBlock)reject) {
+   BOOL status = [[MarketingCloudSDK sharedInstance] sfmc_refreshMessages];
+   NSLog (@"status RCT_EXPORT_METHOD_refreshMessages: %s",  status ? "true" : "false");
+   resolve(@(status));
+}
+
 @end

@@ -155,6 +155,7 @@ Follow [these instructions](./ios_push.md) to enable push for iOS.
     * [.markMessageWithIdDeleted(messageId)](#MCReactModule.markMessageWithIdDeleted) ⇒ <code>Promise.&lt;boolean&gt;</code>
     * [.markAllMessagesRead()](#MCReactModule.markAllMessagesRead) ⇒ <code>Promise.&lt;boolean&gt;</code>
     * [.markAllMessagesDeleted()](#MCReactModule.markAllMessagesDeleted) ⇒ <code>Promise.&lt;boolean&gt;</code>
+    * [.refreshMessages()](#MCReactModule.refreshMessages) ⇒ <code>Promise.&lt;boolean&gt;</code>
 
 <a name="MCReactModule.isPushEnabled"></a>
 
@@ -506,6 +507,19 @@ Sets all Inbox messages as deleted.
 
 - [Android Docs](https://salesforce-marketingcloud.github.io/MarketingCloudSDK-Android/javadocs/6.0/reference/com/salesforce/marketingcloud/registration/RegistrationManager.html#markAllMessagesDeleted())
 - [iOS Docs](https://salesforce-marketingcloud.github.io/MarketingCloudSDK-iOS/appledoc/Classes/MarketingCloudSDK.html#//api/name/markAllMessagesDeleted)
+
+
+<a name="MCReactModule.refreshMessages"></a>
+ 
+### MCReactModule.refreshMessages() ⇒ <code>Promise.&lt;boolean&gt;</code>
+Reload and refresh Inbox messages from the MarketingCloud server.
+ 
+**Kind**: static method of [<code>MCReactModule</code>](#MCReactModule) 
+**Returns**: <code>Promise.&lt;boolean&gt;</code> - A promise to the boolean representation indicatating that refreshing has been started.
+**See**
+ 
+- [Android Docs](https://salesforce-marketingcloud.github.io/MarketingCloudSDK-Android/javadocs/6.0/reference/com/salesforce/marketingcloud/registration/RegistrationManager.html#refreshMessages())
+- [iOS Docs](https://salesforce-marketingcloud.github.io/MarketingCloudSDK-iOS/appledoc/Classes/MarketingCloudSDK.html#//api/name/refreshMessages)
 
 ---
 
