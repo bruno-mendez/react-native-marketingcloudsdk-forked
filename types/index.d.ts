@@ -56,4 +56,7 @@ export default class MCReactModule {
     static getDeletedMessagesCount():Promise<number>;
     static markMessageDeleted(message: object): Promise<boolean>;
     static markMessageWithIdRead(messageId: string):Promise<boolean>;
+    static markMessageWithIdDeleted(messageId: string):Promise<boolean>;
+    static markAllMessagesRead():Promise<boolean>;
+    static markAllMessagesDeleted():Promise<boolean>;
 }
