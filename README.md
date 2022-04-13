@@ -112,6 +112,12 @@ pod install
 
 Follow [these instructions](./ios_push.md) to enable push for iOS.
 
+#### 4. Enable Inbox Messages
+
+```objc
+// Add the following line in the SDK configuration in your AppDelegate.m class:
+[mcsdkBuilder sfmc_setInboxEnabled:@(YES)];
+```
 ## API Reference <a name="reference"></a>
 
 **Kind**: global class  
@@ -132,6 +138,24 @@ Follow [these instructions](./ios_push.md) to enable push for iOS.
     * [.enableVerboseLogging()](#MCReactModule.enableVerboseLogging)
     * [.disableVerboseLogging()](#MCReactModule.disableVerboseLogging)
     * [.logSdkState()](#MCReactModule.logSdkState)
+
+    **Inbox Messages**  
+
+    * [.getAllMessages()](#MCReactModule.getAllMessages) ⇒ <code>Promise.&lt;boolean&gt;</code>
+    * [.markMessageRead(message)](#MCReactModule.markMessageRead) ⇒ <code>Promise.&lt;?boolean&gt;</code>
+    * [.getUnreadMessages()](#MCReactModule.getUnreadMessages) ⇒ <code>Promise.&lt;Array.&lt;!Object&gt;&gt;</code>
+    * [.getReadMessages()](#MCReactModule.getReadMessages) ⇒ <code>Promise.&lt;Array.&lt;!Object&gt;&gt;</code>
+    * [.getDeletedMessages()](#MCReactModule.getDeletedMessages) ⇒ <code>Promise.&lt;Array.&lt;!Object&gt;&gt;</code>
+    * [.getAllMessagesCount()](#MCReactModule.getAllMessagesCount) ⇒ <code>Promise.&lt;number&gt;</code>
+    * [.getUnreadMessagesCount()](#MCReactModule.getUnreadMessagesCount) ⇒ <code>Promise.&lt;number&gt;</code>
+    * [.getReadMessagesCount()](#MCReactModule.getReadMessagesCount) ⇒ <code>Promise.&lt;number&gt;</code>
+    * [.getDeletedMessagesCount()](#MCReactModule.getDeletedMessagesCount) ⇒ <code>Promise.&lt;number&gt;</code>
+    * [.markMessageDeleted(message)](#MCReactModule.getReadMessagesCount) ⇒ <code>Promise.&lt;boolean&gt;</code>
+    * [.markMessageWithIdRead(messageId)](#MCReactModule.markMessageWithIdRead) ⇒ <code>Promise.&lt;boolean&gt;</code>
+    * [.markMessageWithIdDeleted(messageId)](#MCReactModule.markMessageWithIdDeleted) ⇒ <code>Promise.&lt;boolean&gt;</code>
+    * [.markAllMessagesRead()](#MCReactModule.markAllMessagesRead) ⇒ <code>Promise.&lt;boolean&gt;</code>
+    * [.markAllMessagesDeleted()](#MCReactModule.markAllMessagesDeleted) ⇒ <code>Promise.&lt;boolean&gt;</code>
+    * [.refreshMessages()](#MCReactModule.refreshMessages) ⇒ <code>Promise.&lt;boolean&gt;</code>
 
 <a name="MCReactModule.isPushEnabled"></a>
 
@@ -325,8 +349,177 @@ Instructs the native SDK to log the SDK state to the native logging system (Logc
 Android and Xcode/Console.app for iOS).  This content can help diagnose most issues within
 the SDK and will be requested by the Marketing Cloud support team.
 
-**Kind**: static method of [<code>MCReactModule</code>](#MCReactModule)  
+**Kind**: static method of [<code>MCReactModule</code>](#MCReactModule)
 
+---
+<a name="MCReactModule.getAllMessages"></a>
+
+### MCReactModule.getAllMessages() ⇒ <code>Promise.&lt;Array.&lt;?Object&gt;&gt;</code>
+Returns all active inbox messages already downloaded from the  Marketing Cloud SDK.
+
+**Kind**: static method of [<code>MCReactModule</code>](#MCReactModule)  
+**Returns**: <code>Promise.&lt;Array.&lt;?Object&gt;&gt;</code> - A promise to the array of objects representing inbox messeges.  
+**See**
+
+- [Android Docs](https://salesforce-marketingcloud.github.io/MarketingCloudSDK-Android/javadocs/6.0/reference/com/salesforce/marketingcloud/registration/RegistrationManager.html#getAllMessages())
+- [iOS Docs](https://salesforce-marketingcloud.github.io/MarketingCloudSDK-iOS/appledoc/Classes/MarketingCloudSDK.html#//api/name/sfmc_getAllMessages)
+
+
+<a name="MCReactModule.markMessageRead"></a>
+
+### MCReactModule.markMessageRead() ⇒ <code>Promise.&lt;Array.&lt;?Object&gt;&gt;</code>
+Sets an Inbox message as read.
+
+**Kind**: static method of [<code>MCReactModule</code>](#MCReactModule)  
+**Returns**: <code>Promise.&lt;boolean&gt;</code> - A promise to the boolean representation indicatating success in setting the message to read.
+**See**
+
+- [Android Docs](https://salesforce-marketingcloud.github.io/MarketingCloudSDK-Android/javadocs/6.0/reference/com/salesforce/marketingcloud/registration/RegistrationManager.html#markMessageRead())
+- [iOS Docs](https://salesforce-marketingcloud.github.io/MarketingCloudSDK-iOS/appledoc/Classes/MarketingCloudSDK.html#//api/name/markMessageRead)
+
+| Param | Type | Description |
+| --- | --- | --- |
+| message | <code>object</code> | The Inbox message to be set as read. |
+
+<a name="MCReactModule.getUnreadMessages"></a>
+
+### MCReactModule.getUnreadMessages() ⇒ <code>Promise.&lt;Array.&lt;?Object&gt;&gt;</code>
+Returns all unread active Inbox messages already downloaded from the  Marketing Cloud SDK.
+
+**Kind**: static method of [<code>MCReactModule</code>](#MCReactModule)  
+**Returns**: <code>Promise.&lt;Array.&lt;?Object&gt;&gt;</code> - A promise to the array of objects representing the unread inbox messeges.  
+**See**
+
+- [Android Docs](https://salesforce-marketingcloud.github.io/MarketingCloudSDK-Android/javadocs/6.0/reference/com/salesforce/marketingcloud/registration/RegistrationManager.html#getUnreadMessages())
+- [iOS Docs](https://salesforce-marketingcloud.github.io/MarketingCloudSDK-iOS/appledoc/Classes/MarketingCloudSDK.html#//api/name/sfmc_getUnreadMessages)
+
+
+<a name="MCReactModule.getUnreadMessagesCount"></a>
+
+### MCReactModule.getUnreadMessagesCount() ⇒ <code>Promise.&lt;number&gt;</code>
+Returns count of unread active Inbox messages already downloaded from the  Marketing Cloud SDK.
+
+**Kind**: static method of [<code>MCReactModule</code>](#MCReactModule)  
+**Returns**: <code>Promise.&lt;number&gt;</code> - A promise to the number representing count of unread active Inbox messages.
+**See**
+
+- [Android Docs](https://salesforce-marketingcloud.github.io/MarketingCloudSDK-Android/javadocs/6.0/reference/com/salesforce/marketingcloud/registration/RegistrationManager.html#getUnreadMessagesCount())
+- [iOS Docs](https://salesforce-marketingcloud.github.io/MarketingCloudSDK-iOS/appledoc/Classes/MarketingCloudSDK.html#//api/name/getUnreadMessagesCount)
+
+
+<a name="MCReactModule.getReadMessagesCount"></a>
+
+### MCReactModule.getReadMessagesCount() ⇒ <code>Promise.&lt;number&gt;</code>
+Returns count of all active Inbox messages marked as read, already downloaded from the  Marketing Cloud SDK.
+
+**Kind**: static method of [<code>MCReactModule</code>](#MCReactModule)  
+**Returns**: <code>Promise.&lt;number&gt;</code> - A promise to the number representing count of all active Inbox messages marked as read.
+**See**
+
+- [Android Docs](https://salesforce-marketingcloud.github.io/MarketingCloudSDK-Android/javadocs/6.0/reference/com/salesforce/marketingcloud/registration/RegistrationManager.html#getReadMessagesCount())
+- [iOS Docs](https://salesforce-marketingcloud.github.io/MarketingCloudSDK-iOS/appledoc/Classes/MarketingCloudSDK.html#//api/name/getReadMessagesCount)
+
+
+<a name="MCReactModule.getDeletedMessagesCount"></a>
+
+### MCReactModule.getDeletedMessagesCount() ⇒ <code>Promise.&lt;number&gt;</code>
+Returns count of all active Inbox messages marked as deleted (already downloaded from the  Marketing Cloud SDK).
+
+**Kind**: static method of [<code>MCReactModule</code>](#MCReactModule)  
+**Returns**: <code>Promise.&lt;number&gt;</code> - A promise to the number representing count of all active Inbox messages marked as deleted.
+**See**
+
+- [Android Docs](https://salesforce-marketingcloud.github.io/MarketingCloudSDK-Android/javadocs/6.0/reference/com/salesforce/marketingcloud/registration/RegistrationManager.html#getDeletedMessagesCount())
+- [iOS Docs](https://salesforce-marketingcloud.github.io/MarketingCloudSDK-iOS/appledoc/Classes/MarketingCloudSDK.html#//api/name/getDeletedMessagesCount)
+
+
+<a name="MCReactModule.markMessageDeleted"></a>
+
+### MCReactModule.markMessageDeleted(message) ⇒ <code>Promise.&lt;boolean&gt;</code>
+Sets an Inbox message as deleted.
+
+**Kind**: static method of [<code>MCReactModule</code>](#MCReactModule)  
+**Returns**: <code>Promise.&lt;boolean&gt;</code> - A promise to the boolean representation indicatating success in setting the message as deleted.
+**See**
+
+- [Android Docs](https://salesforce-marketingcloud.github.io/MarketingCloudSDK-Android/javadocs/6.0/reference/com/salesforce/marketingcloud/registration/RegistrationManager.html#markMessageDeleted())
+- [iOS Docs](https://salesforce-marketingcloud.github.io/MarketingCloudSDK-iOS/appledoc/Classes/MarketingCloudSDK.html#//api/name/markMessageDeleted)
+
+| Param | Type | Description |
+| --- | --- | --- |
+| message | <code>object</code> | The Inbox message to be set as deleted. |
+
+<a name="MCReactModule.markMessageWithIdRead"></a>
+
+### MCReactModule.markMessageWithIdRead(messageId) ⇒ <code>Promise.&lt;boolean&gt;</code>
+Sets an Inbox message as read using messageId.
+
+**Kind**: static method of [<code>MCReactModule</code>](#MCReactModule)  
+**Returns**: <code>Promise.&lt;boolean&gt;</code> - A promise to the boolean representation indicatating success in setting the message as read.
+**See**
+
+- [Android Docs](https://salesforce-marketingcloud.github.io/MarketingCloudSDK-Android/javadocs/6.0/reference/com/salesforce/marketingcloud/registration/RegistrationManager.html#markMessageWithIdRead())
+- [iOS Docs](https://salesforce-marketingcloud.github.io/MarketingCloudSDK-iOS/appledoc/Classes/MarketingCloudSDK.html#//api/name/markMessageWithIdRead)
+
+| Param | Type | Description |
+| --- | --- | --- |
+| messageId | <code>string</code> | A string representing the Inbox message identifier. |
+
+
+<a name="MCReactModule.markMessageWithIdDeleted"></a>
+
+### MCReactModule.markMessageWithIdDeleted(messageId) ⇒ <code>Promise.&lt;boolean&gt;</code>
+Sets an Inbox message as deleted using messageId.
+
+**Kind**: static method of [<code>MCReactModule</code>](#MCReactModule)  
+**Returns**: <code>Promise.&lt;boolean&gt;</code> - A promise to the boolean representation indicatating success in setting the message as read.
+**See**
+
+- [Android Docs](https://salesforce-marketingcloud.github.io/MarketingCloudSDK-Android/javadocs/6.0/reference/com/salesforce/marketingcloud/registration/RegistrationManager.html#markMessageWithIdDeleted())
+- [iOS Docs](https://salesforce-marketingcloud.github.io/MarketingCloudSDK-iOS/appledoc/Classes/MarketingCloudSDK.html#//api/name/markMessageWithIdDeleted)
+
+| Param | Type | Description |
+| --- | --- | --- |
+| messageId | <code>string</code> | A string representing the Inbox message identifier. |
+
+
+<a name="MCReactModule.markAllMessagesRead"></a>
+
+### MCReactModule.markAllMessagesRead() ⇒ <code>Promise.&lt;boolean&gt;</code>
+Sets all Inbox messages as read.
+
+**Kind**: static method of [<code>MCReactModule</code>](#MCReactModule)  
+**Returns**: <code>Promise.&lt;boolean&gt;</code> - A promise to the boolean representation indicatating success in setting the messages as read.
+**See**
+
+- [Android Docs](https://salesforce-marketingcloud.github.io/MarketingCloudSDK-Android/javadocs/6.0/reference/com/salesforce/marketingcloud/registration/RegistrationManager.html#markAllMessagesRead())
+- [iOS Docs](https://salesforce-marketingcloud.github.io/MarketingCloudSDK-iOS/appledoc/Classes/MarketingCloudSDK.html#//api/name/markAllMessagesRead)
+
+
+<a name="MCReactModule.markAllMessagesDeleted"></a>
+
+### MCReactModule.markAllMessagesDeleted() ⇒ <code>Promise.&lt;boolean&gt;</code>
+Sets all Inbox messages as deleted.
+
+**Kind**: static method of [<code>MCReactModule</code>](#MCReactModule)  
+**Returns**: <code>Promise.&lt;boolean&gt;</code> - A promise to the boolean representation indicatating success in setting the messages as deleted.
+**See**
+
+- [Android Docs](https://salesforce-marketingcloud.github.io/MarketingCloudSDK-Android/javadocs/6.0/reference/com/salesforce/marketingcloud/registration/RegistrationManager.html#markAllMessagesDeleted())
+- [iOS Docs](https://salesforce-marketingcloud.github.io/MarketingCloudSDK-iOS/appledoc/Classes/MarketingCloudSDK.html#//api/name/markAllMessagesDeleted)
+
+
+<a name="MCReactModule.refreshMessages"></a>
+ 
+### MCReactModule.refreshMessages() ⇒ <code>Promise.&lt;boolean&gt;</code>
+Reload and refresh Inbox messages from the MarketingCloud server.
+ 
+**Kind**: static method of [<code>MCReactModule</code>](#MCReactModule) 
+**Returns**: <code>Promise.&lt;boolean&gt;</code> - A promise to the boolean representation indicatating that refreshing has been started.
+**See**
+ 
+- [Android Docs](https://salesforce-marketingcloud.github.io/MarketingCloudSDK-Android/javadocs/6.0/reference/com/salesforce/marketingcloud/registration/RegistrationManager.html#refreshMessages())
+- [iOS Docs](https://salesforce-marketingcloud.github.io/MarketingCloudSDK-iOS/appledoc/Classes/MarketingCloudSDK.html#//api/name/refreshMessages)
 
 ---
 
