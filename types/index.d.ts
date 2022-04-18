@@ -46,7 +46,6 @@ export default class MCReactModule {
     static disableVerboseLogging(): void;
     static logSdkState(): void;
     static getAllMessages(): Promise<Array>;
-    static markMessageRead(message: object): Promise<boolean>;
     static getUnreadMessages(): Promise<Array>;
     static getReadMessages(): Promise<Array>;
     static getDeletedMessages(): Promise<Array>;
@@ -54,6 +53,7 @@ export default class MCReactModule {
     static getUnreadMessagesCount():Promise<number>;
     static getReadMessagesCount():Promise<number>;
     static getDeletedMessagesCount():Promise<number>;
+    static markMessageRead(message: object): Promise<boolean>;
     static markMessageDeleted(message: object): Promise<boolean>;
     static markMessageWithIdRead(messageId: string):Promise<boolean>;
     static markMessageWithIdDeleted(messageId: string):Promise<boolean>;
