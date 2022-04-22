@@ -37,6 +37,9 @@ import com.facebook.react.bridge.WritableArray;
 import com.facebook.react.bridge.WritableMap;
 import com.salesforce.marketingcloud.MCLogListener;
 import com.salesforce.marketingcloud.MarketingCloudSdk;
+import com.salesforce.marketingcloud.messages.inbox.InboxMessage;
+
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import javax.annotation.Nonnull;
@@ -206,6 +209,178 @@ public class RNMarketingCloudSdkModule extends ReactContextBaseJavaModule {
             }
         });
     }
+
+    @ReactMethod
+    public void getAllMessages(final Promise promise) {
+        handleAction(new PromiseAction(promise) {
+            @Override
+            void execute(MarketingCloudSdk sdk, @NonNull Promise promise) {
+                List<InboxMessage> messages = sdk.getInboxMessageManager().getMessages();
+                WritableArray array = Arguments.createArray();
+                if (!messages.isEmpty()) {
+                    for (InboxMessage message : messages) {
+                        array.pushString(String.valueOf(message));
+                    }
+                }
+                promise.resolve(array);
+            }
+        });
+    }
+
+    @ReactMethod
+    public void markMessageRead(final String message) {
+        handleAction(new Action() {
+            @Override
+            void execute(MarketingCloudSdk sdk) {
+                sdk.getInboxMessageManager().setMessageRead(message);
+            }
+        });
+    }
+
+    @ReactMethod
+    public void getUnreadMessages(final Promise promise) {
+        handleAction(new PromiseAction(promise) {
+            @Override
+            void execute(MarketingCloudSdk sdk, @NonNull Promise promise) {
+                List<InboxMessage> unreadMessages = sdk.getInboxMessageManager().getUnreadMessages();
+                WritableArray array = Arguments.createArray();
+                if (!unreadMessages.isEmpty()) {
+                    for (InboxMessage unreadMessage : unreadMessages) {
+                        array.pushString(String.valueOf(unreadMessage));
+                    }
+                }
+                promise.resolve(array);
+            }
+        });
+    }
+
+    @ReactMethod
+    public void getReadMessages(final Promise promise) {
+        handleAction(new PromiseAction(promise) {
+            @Override
+            void execute(MarketingCloudSdk sdk, @NonNull Promise promise) {
+                List<InboxMessage> readMessages = sdk.getInboxMessageManager().getReadMessages();
+                WritableArray array = Arguments.createArray();
+                if (!readMessages.isEmpty()) {
+                    for (InboxMessage readMessage : readMessages) {
+                        array.pushString(String.valueOf(readMessage));
+                    }
+                }
+                promise.resolve(array);
+            }
+        });
+    }
+
+    @ReactMethod
+    public void getDeletedMessages(final Promise promise) {
+        handleAction(new PromiseAction(promise) {
+            @Override
+            void execute(MarketingCloudSdk sdk, @NonNull Promise promise) {
+                List<InboxMessage> deletedMessages = sdk.getInboxMessageManager().getDeletedMessages();
+                WritableArray array = Arguments.createArray();
+                if (!deletedMessages.isEmpty()) {
+                    for (InboxMessage deletedMessage : deletedMessages) {
+                        array.pushString(String.valueOf(deletedMessage));
+                    }
+                }
+                promise.resolve(array);
+            }
+        });
+    }
+
+    @ReactMethod
+    public void getAllMessagesCount(final Promise promise) {
+        handleAction(new PromiseAction(promise) {
+            @Override
+            void execute(MarketingCloudSdk sdk, @NonNull Promise promise) {
+                int messagesCount = sdk.getInboxMessageManager().getMessageCount();
+                promise.resolve(messagesCount);
+            }
+        });
+    }
+
+    @ReactMethod
+    public void getUnreadMessagesCount(final Promise promise) {
+        handleAction(new PromiseAction(promise) {
+            @Override
+            void execute(MarketingCloudSdk sdk, @NonNull Promise promise) {
+                int unreadMessagesCount = sdk.getInboxMessageManager().getUnreadMessageCount();
+                promise.resolve(unreadMessagesCount);
+            }
+        });
+    }
+
+    @ReactMethod
+    public void getReadMessagesCount(final Promise promise) {
+        handleAction(new PromiseAction(promise) {
+            @Override
+            void execute(MarketingCloudSdk sdk, @NonNull Promise promise) {
+                int readMessagesCount = sdk.getInboxMessageManager().getReadMessageCount();
+                promise.resolve(readMessagesCount);
+            }
+        });
+    }
+
+    @ReactMethod
+    public void getDeletedMessagesCount(final Promise promise) {
+        handleAction(new PromiseAction(promise) {
+            @Override
+            void execute(MarketingCloudSdk sdk, @NonNull Promise promise) {
+                int deletedMessagesCount = sdk.getInboxMessageManager().getDeletedMessageCount();
+                promise.resolve(deletedMessagesCount);
+            }
+        });
+    }
+
+    @ReactMethod
+    public void markMessageDeleted(final String message) {
+        handleAction(new Action() {
+            @Override
+            void execute(MarketingCloudSdk sdk) {
+                sdk.getInboxMessageManager().deleteMessage(message);
+            }
+        });
+    }
+
+    @ReactMethod
+    public void markMessageWithIdRead(final String messageId) {
+        handleAction(new Action() {
+            @Override
+            void execute(MarketingCloudSdk sdk) {
+                sdk.getInboxMessageManager().setMessageRead(messageId);
+            }
+        });
+    }
+
+    @ReactMethod
+    public void markAllMessagesRead() {
+        handleAction(new Action() {
+            @Override
+            void execute(MarketingCloudSdk sdk) {
+                sdk.getInboxMessageManager().markAllMessagesRead();
+            }
+        });
+    }
+
+    @ReactMethod
+    public void markAllMessagesDeleted() {
+        handleAction(new Action() {
+            @Override
+            void execute(MarketingCloudSdk sdk) {
+                sdk.getInboxMessageManager().markAllMessagesDeleted();
+            }
+        });
+    }
+
+    // @ReactMethod
+    // public void refreshMessages() {
+    //     handleAction(new Action() {
+    //         @Override
+    //         void execute(MarketingCloudSdk sdk) {
+    //             sdk.getInboxMessageManager().refreshInbox();
+    //         }
+    //     });
+    // }
 
     private void handleAction(final Action action) {
         boolean initializing = MarketingCloudSdk.isInitializing();

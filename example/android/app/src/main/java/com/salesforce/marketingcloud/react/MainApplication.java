@@ -55,6 +55,7 @@ public class MainApplication extends Application implements ReactApplication {
                         .setMarketingCloudServerUrl("{MC_APP_SERVER_URL}")
                         .setNotificationCustomizationOptions(NotificationCustomizationOptions.create(R.drawable.ic_notification))
                         .setAnalyticsEnabled(true)
+                        .setInboxEnabled(true)
                         .build(this),
                 initializationStatus -> Log.e("INIT", initializationStatus.toString()));
     }
